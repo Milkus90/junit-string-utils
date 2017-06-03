@@ -81,7 +81,7 @@ public class StringUtilsTest {
 	public void countWordsInSentenceTest(){
 		int ile = classUnderTest.countWordsInSentence("Ala ma kota.");
 		Assert.assertEquals(3, ile);
-		ile = classUnderTest.countWordsInSentence("Ala ma  kota. ");
+		ile = classUnderTest.countWordsInSentence("Ala   ma  kota. ");
 		Assert.assertEquals(3, ile);
 		ile = classUnderTest.countWordsInSentence("  kota");
 		Assert.assertEquals(1, ile);

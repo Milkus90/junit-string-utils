@@ -77,11 +77,12 @@ public class StringUtils {
 
 	public int countWordsInSentence(String sentence) {
 		String[] words = sentence.split(" ");
+		int ile = words.length;
 		for (int i = 0; i < words.length; i++){
-			if (words[i].equals(null)){
-				return words.length-1;
+			if (words[i].isEmpty()){
+				ile -=1;
 			}
 		}
-		return words.length;
+		return ile;
 	}
 }
