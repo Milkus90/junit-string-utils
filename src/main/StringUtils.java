@@ -26,7 +26,12 @@ public class StringUtils {
 
 	public String toUpperCase(String word) {
 		char[] array = word.toCharArray();
-
+		
+		for (int i = 0; i < array.length; i++) {
+			if ((array[i] > 'z' || array[i] < 'a') && (array[i] > 'Z' || array[i] < 'A'))
+		throw new IllegalArgumentException("Podano znaki spoza standardowych a-z");
+		}
+		
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] >= 'a' && array[i] <= 'z') {
 				array[i] = (char) (array[i] - 32);
@@ -38,6 +43,11 @@ public class StringUtils {
 
 	public String toLowerCase(String word) {
 		char[] array = word.toCharArray();
+		
+		for (int i = 0; i < array.length; i++) {
+			if ((array[i] > 'z' || array[i] < 'a') && (array[i] > 'Z' || array[i] < 'A'))
+		throw new IllegalArgumentException("Podano znaki spoza standardowych a-z");
+		}
 
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] >= 'A' && array[i] <= 'Z') {
@@ -48,7 +58,8 @@ public class StringUtils {
 		return new String(array);
 	}
 
-	public boolean isFemaleName(String name) {
+	public boolean isFemaleName(String name) throws NullPointerException {
+		name = toLowerCase(name);
 		return name.endsWith("a");
 	}
 
@@ -66,6 +77,11 @@ public class StringUtils {
 
 	public int countWordsInSentence(String sentence) {
 		String[] words = sentence.split(" ");
+		for (int i = 0; i < words.length; i++){
+			if (words[i].equals(null)){
+				return words.length-1;
+			}
+		}
 		return words.length;
 	}
 }
